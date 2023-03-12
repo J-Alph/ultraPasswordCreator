@@ -7,11 +7,11 @@ var minCharLimit = 7;
 var maxCharlimit = 140;
 
 var alphaPick = "abcdefghijklmnopqrstuvwxyz".split("");
-var specialPick = "!@#$%^&*".split();
+var specialPick = "@!#$%^&*".split("");
 var caseUpper = document.body.setAttribute("div", "Uppercase");
 var caseLower = document.body.setAttribute("div", "Lowercase");
-var numPick = "1234567890".split("");
-var passchars = [];
+var numPick = [1,2,3,4,5,6,7,8,9,0];
+
 
 
 
@@ -29,19 +29,31 @@ function writePassword() {
     return;
   }
 
+  
 
-  if (userAnswer < minCharLimit || userAnswer > maxCharlimit) {
-    window.alert("please enter a valid character limit between 7 & 140")
+  if (userAnswer < minCharLimit || userAnswer > maxCharlimit  ) {
+    window.alert("please enter a valid numeric character limit between 7 & 140")
     return;
   
   } else if
     (userAnswer => minCharLimit || userAnswer <= maxCharlimit)
     console.log("we in business now")
     
-    var alphaQuestion = confirm("Would you like to add numeric values")
-   
+  // if(userAnswer !== numPick){
+  //   window.alert("please enter a valid numeric character ******limit between 7 & 140")
+  //   return ("not a valid answer");
+  // }else
+  //   console.log("something happend")
+
+
+
+
+
+    var alphaQuestion = confirm("Would you like to add alpha characters to the password")
+
     if(alphaQuestion){
-    console.log("USer wants to add numeric value") 
+    console.log("USer wants to add alphas characters to the value") 
+      
     } else 
     console.log("user does not want to add number values")
 
@@ -60,45 +72,71 @@ function writePassword() {
     }else
     console.log("user does not want to add upper case letters")
 
-    var specialQuestion =confirm ("Would like the password have lowercase letters")
+    var specialQuestion =confirm ("Would like the password have special characters?")
 
     if(specialQuestion){
       console.log("User wants to add special characters")
     }else
     console.log("user does not want to special characters")
 
+    var numQuestion = confirm ("Would you like to add numbers to the passwor")
+
+    if(numQuestion){
+      console.log("user wants to add numbers to the password")
+    }
+      console.log("user does not want to add numbers to the password")
+
+    // var index = Math.floor(math.random() * )
+
+
+    // var userVallenght = userAnswer.valueOf(Number);
+    // // randomPass = userVallenght
+
+    // if (alphaQuestion)
+    
+
+    console.log(numPick)
 
   var response = userAnswer;
 
-  // var password = generatePassword();
+  var password = generatePassword();
+  function generatePassword(){
+  
+    passCatcher = [];
+
+    if(alphaQuestion)
+      passCatcher.push(alphaPick);
+      else{
+        console.log("vargas")
+      }
+    //   if (alphaQuestion)
+  //     passwordText.textContent = alphaPick.[Math.floor]
+  
+  if (numQuestion)
+    passCatcher.push(numPick);
+    else{
+      console.log("vargas 2")
+    }
+
+  }
+
+  if(specialQuestion)
+    passCatcher.push(specialPick)
+    else{
+      console.log("vargas 3")
+    
+    }
+    
+
   var passwordText = document.querySelector("#password");
+  passwordText.textContent = passCatcher;
+      console.log(passCatcher);
+
+  
+
+  }
 
 
-
-  passwordText.textContent = response;
-
-  // if (generatePassword){
-  //   console.log("happy day")
-  // }
-  //   console.log("no")
-
-
-
-
-  //   var letterPick = confirm("Say something good");
-  //     console.log("Use lower case" , letterPick);
-  //     if(letterPick){
-  //       passchars = passchars.concat(alphaPick)
-  //     }
-  //     console.log(passchars);
-
-
-
-  //  passwordText.textContent = "This was made today." + passwordText + "."
-
-  //  document.body.appendChild(passwordText);
-
-}
 // passwordText.textContent = "This is your result " + password + ".";
 
 //   passwordText.value = password;
@@ -117,6 +155,8 @@ function writePassword() {
 
 //  window.alert("Password"); 
 
+
+
 //   if(!passChoices){
 //     alert("bad bad!")
 //     return;
@@ -129,6 +169,12 @@ function writePassword() {
 
 
 // Add event listener to generate button
+// var runAgain = window.confirm("Run again?")
+
+// if(runAgain){
+//   writePassword();
+// }
+
 generateBtn.addEventListener("click", writePassword);
 
 
