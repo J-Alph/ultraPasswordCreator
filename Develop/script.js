@@ -16,94 +16,109 @@ function generatePassword() {
 
   passCatcher = [];
 
-  var userAnswer = window.prompt("Enter your choice of length of password")
+  var userAnswer = window.prompt("Enter your the length of password")
 
   if (!userAnswer) {
     return;
   }
 
   if (userAnswer < minCharLimit || userAnswer > maxCharlimit) {
-    window.alert("please enter a valid numeric character limit between 7 & 140")
+    window.alert("please enter a numerical value between 7 & 140")
     return;
 
   } else if
     (userAnswer => minCharLimit || userAnswer <= maxCharlimit)
     console.log("we in business now")
 
-
-
-  var alphaQuestion = confirm("Would you like to add alpha characters to the password")
-
-  if (alphaQuestion) {
-    console.log("USer wants to add alphas characters to the value")
-  } else
-    console.log("user does not want to add number values")
+  if (isNaN(userAnswer)) {
+    window.alert ("please enter a numerical value between 7 & 140")
+    return;
+  } else {
 
 
 
-  var lowerQuestion = confirm("Would like the password have lowercase letters")
 
-  if (lowerQuestion) {
-    console.log("User wants to add lower case letters")
-  } else
-    console.log("user does not want to add lower case letters")
+    // var alphaQuestion = confirm("Would you like to add alpha characters to the password")
 
-
-
-  var upperQuestion = confirm("Would like the password have uppercase letters")
-
-  if (upperQuestion) {
-    console.log("User wants to add upper case letters")
-  } else
-    console.log("user does not want to add upper case letters")
+    // if (alphaQuestion) {
+    //   console.log("USer wants to add alphas characters to the value")
+    // } else
+    //   console.log("user does not want to add number values")
 
 
 
-  var specialQuestion = confirm("Would like the password have special characters?")
+    var lowerQuestion = confirm("Would like the password have lowercase letters")
 
-  if (specialQuestion) {
-    console.log("User wants to add special characters")
-  } else
-    console.log("user does not want to special characters")
-
-
-
-  var numQuestion = confirm("Would you like to add numbers to the passwor")
-
-  if (numQuestion) {
-    console.log("user wants to add numbers to the password")
-  } else
-    console.log("user does not want to add numbers to the password")
+    if (lowerQuestion) {
+      console.log("User wants to add lower case letters")
+    } else
+      console.log("user does not want to add lower case letters")
 
 
-  if (alphaQuestion)
-    passCatcher.push(lowerCase);
-  else {
-    console.log("vargas")
+
+    var upperQuestion = confirm("Would like the password have uppercase letters")
+
+    if (upperQuestion) {
+      console.log("User wants to add upper case letters")
+    } else
+      console.log("user does not want to add upper case letters")
+
+
+
+    var specialQuestion = confirm("Would like the password have special characters?")
+
+    if (specialQuestion) {
+      console.log("User wants to add special characters")
+    } else
+      console.log("user does not want to special characters")
+
+
+
+    var numQuestion = confirm("Would you like to add numbers to the passwor")
+
+    if (numQuestion) {
+      console.log("user wants to add numbers to the password")
+    } else
+      console.log("user does not want to add numbers to the password")
+
+
+    if (lowerQuestion)
+      passCatcher.push(lowerCase);
+    else {
+      console.log("vargas")
+    }
+
+    if (numQuestion)
+      passCatcher.push(numPick);
+    else {
+      console.log("vargas 2")
+    }
+
+    if (specialQuestion)
+      passCatcher.push(specialPick)
+    else {
+      console.log("vargas 3")
+    }
+
+    if (upperQuestion) {
+      passCatcher.push(upperCase)
+    } else
+      console.log("vargas 4")
+
+
+    for (let index = 0; index < userAnswer; index++) {
+
+      passCatcher[index] = Math.floor(Math.random() * passCatcher.length) + 1;
+    }
+    for (index = 0; index < passCatcher.length; index++) {
+      console.log(passCatcher.join(""));
+
+    }
   }
+  return passCatcher.join("");
 
-  if (numQuestion)
-    passCatcher.push(numPick);
-  else {
-    console.log("vargas 2")
-  }
-
-  if (specialQuestion)
-    passCatcher.push(specialPick)
-  else {
-    console.log("vargas 3")
-  }
-
-  if (upperQuestion) {
-    passCatcher.push(upperCase)
-  }
-
-  if (lowerQuestion) {
-    passCatcher.push(lowerCase);
-  }
 
 }
-
 
 function writePassword() {
 
@@ -111,26 +126,25 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
 
+  passwordText.value = password;
 
 
 
-  
+  // for (let index = 0; index < passCatcher.length; index++) {
 
-  for (let index = 0; index < passCatcher.length; index++) {
-    
-   passCatcher[index] = Math.floor(Math.random()*140) + 1;
-  }
-   for(index = 0; index < passCatcher.length; index ++){
-    console.log(passCatcher.join(passCatcher));
-  
-  }
-    // var passwordText = passCatcher[index]
-  
+  //  passCatcher[index] = Math.floor(Math.random()*140) + 1;
+  // }
+  //  for(index = 0; index < passCatcher.length; index ++){
+  //   console.log(passCatcher.join(passCatcher));
+
+  // }
+  // var passwordText = passCatcher[index]
+
   // //  passwordText.textContent = passCatcher.join;
   // }
   // return passCatcher.join();
 
-passwordText.textContent = passCatcher.join(passCatcher);
+  passwordText.textContent = password;
 
 };
 
