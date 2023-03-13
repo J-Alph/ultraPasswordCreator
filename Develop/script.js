@@ -1,20 +1,23 @@
-// Assignment Code
+// Assignment Code for variables used in fuctions
 var generateBtn = document.querySelector("#generate");
 
-var minCharLimit = 7;
-var maxCharlimit = 140;
+var minCharLimit = 8;
+var maxCharlimit = 128;
 
 var lowerCase = "abcdefghijklmnopqrstuvwxyz".split("");
 var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-var specialPick = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~".split("");
-var numPick = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+var specialSet = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~".split("");
+var numSet = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
 
-
+// Defining the fuctions "generatePassword" parameters
 
 function generatePassword() {
 
-  passCatcher = [];
+  var passCatch = [];
+  var passwordarray = [];
+
+  // Defined a series of prompts for the user to input choices for their passwrod
 
   var userAnswer = window.prompt("Enter your the length of password")
 
@@ -23,7 +26,7 @@ function generatePassword() {
   }
 
   if (userAnswer < minCharLimit || userAnswer > maxCharlimit) {
-    window.alert("please enter a numerical value between 7 & 140")
+    window.alert("please enter a numerical value between 8 & 128")
     return;
 
   } else if
@@ -31,20 +34,9 @@ function generatePassword() {
     console.log("we in business now")
 
   if (isNaN(userAnswer)) {
-    window.alert ("please enter a numerical value between 7 & 140")
+    window.alert("please enter a numerical value between 7 & 140")
     return;
   } else {
-
-
-
-
-    // var alphaQuestion = confirm("Would you like to add alpha characters to the password")
-
-    // if (alphaQuestion) {
-    //   console.log("USer wants to add alphas characters to the value")
-    // } else
-    //   console.log("user does not want to add number values")
-
 
 
     var lowerQuestion = confirm("Would like the password have lowercase letters")
@@ -74,7 +66,7 @@ function generatePassword() {
 
 
 
-    var numQuestion = confirm("Would you like to add numbers to the passwor")
+    var numQuestion = confirm("Would you like to add numbers to the password")
 
     if (numQuestion) {
       console.log("user wants to add numbers to the password")
@@ -83,66 +75,57 @@ function generatePassword() {
 
 
     if (lowerQuestion)
-      passCatcher.push(lowerCase);
+      passCatch = passCatch.concat(lowerCase);
     else {
-      console.log("vargas")
+      console.log("option no")
     }
 
     if (numQuestion)
-      passCatcher.push(numPick);
+      passCatch = passCatch.concat(numSet);
     else {
-      console.log("vargas 2")
+      console.log("option2 no")
     }
 
     if (specialQuestion)
-      passCatcher.push(specialPick)
+      passCatch = passCatch.concat(specialSet)
     else {
-      console.log("vargas 3")
+      console.log("option3 no")
     }
 
     if (upperQuestion) {
-      passCatcher.push(upperCase)
+      passCatch = passCatch.concat(upperCase)
     } else
-      console.log("vargas 4")
+      console.log("option4 no")
+
+    console.log(passCatch);
 
 
-    for (let index = 0; index < userAnswer; index++) {
+    for (var index = 0; index < userAnswer; index++) {
 
-      passCatcher[index] = Math.floor(Math.random() * passCatcher.length) + 1;
+      var randomindex = Math.floor(Math.random() * passCatch.length);
+      var randomchar = passCatch[randomindex];
+
+      passwordarray.push(randomchar);
+
+
     }
-    for (index = 0; index < passCatcher.length; index++) {
-      console.log(passCatcher.join(""));
 
-    }
   }
-  return passCatcher.join("");
+  // Returns the results of the function without separators
+  console.log(passwordarray);
+  return passwordarray.join("");
 
 
 }
 
+// function for the password button upon press- password will be input in provided space
 function writePassword() {
 
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
 
-  passwordText.value = password;
 
-
-
-  // for (let index = 0; index < passCatcher.length; index++) {
-
-  //  passCatcher[index] = Math.floor(Math.random()*140) + 1;
-  // }
-  //  for(index = 0; index < passCatcher.length; index ++){
-  //   console.log(passCatcher.join(passCatcher));
-
-  // }
-  // var passwordText = passCatcher[index]
-
-  // //  passwordText.textContent = passCatcher.join;
-  // }
-  // return passCatcher.join();
 
   passwordText.textContent = password;
 
