@@ -73,6 +73,7 @@ function generatePassword() {
     } else
       console.log("user does not want to add numbers to the password")
 
+    //Adds input to the array based on input
 
     if (lowerQuestion)
       passCatch = passCatch.concat(lowerCase);
